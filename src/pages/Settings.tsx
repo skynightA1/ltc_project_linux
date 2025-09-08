@@ -136,10 +136,10 @@ const Settings: React.FC = () => {
             </div>
             
             <div className="about-links">
-              <a href="#" className="about-link">使用條款</a>
-              <a href="#" className="about-link">隱私政策</a>
-              <a href="#" className="about-link">幫助中心</a>
-              <a href="#" className="about-link">聯絡我們</a>
+              <button className="about-link" onClick={() => alert('使用條款功能開發中')}>使用條款</button>
+              <button className="about-link" onClick={() => alert('隱私政策功能開發中')}>隱私政策</button>
+              <button className="about-link" onClick={() => alert('幫助中心功能開發中')}>幫助中心</button>
+              <button className="about-link" onClick={() => alert('聯絡我們功能開發中')}>聯絡我們</button>
             </div>
           </div>
         </section>

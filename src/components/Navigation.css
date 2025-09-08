@@ -22,6 +22,34 @@
 .navbar-brand {
   display: flex;
   align-items: center;
+  gap: 20px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-name {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.logout-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: #d32f2f;
 }
 
 .navbar-title {
@@ -160,6 +188,24 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* 手機版登出按鈕樣式 */
+.logout-tabbar-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #f44336 !important;
+  font-weight: 500;
+}
+
+.logout-tabbar-btn:hover {
+  background: #ffebee !important;
+  color: #d32f2f !important;
+}
+
+.logout-tabbar-btn:active {
+  background: #ffcdd2 !important;
 }
 
 /* 高對比度模式 */

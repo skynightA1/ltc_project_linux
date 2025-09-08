@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { NavItem } from '../types';
-import { useApp } from '../context/AppContext';
+import { useAuth } from '../context/AuthContext';
 import './Navigation.css';
 
 const navItems: NavItem[] = [
@@ -15,7 +15,7 @@ const navItems: NavItem[] = [
 
 const Navigation: React.FC = () => {
   const location = useLocation();
-  const { state } = useApp();
+  const { state: authState, logout } = useAuth();
 
   return (
     <>
@@ -24,6 +24,18 @@ const Navigation: React.FC = () => {
         <div className="navbar-container">
           <div className="navbar-brand">
             <h1 className="navbar-title">長期照護平台</h1>
+            {authState.user && (
+              <div className="user-info">
+                <span className="user-name">歡迎，{authState.user.full_name || authState.user.username}</span>
+                <button 
+                  onClick={logout}
+                  className="logout-btn"
+                  aria-label="登出"
+                >
+                  登出
+                </button>
+              </div>
+            )}
           </div>
           
           <ul className="navbar-menu">
@@ -71,6 +83,19 @@ const Navigation: React.FC = () => {
               </Link>
             </li>
           ))}
+          {/* 手機版登出按鈕 */}
+          {authState.user && (
+            <li className="tabbar-item">
+              <button
+                onClick={logout}
+                className="tabbar-link logout-tabbar-btn"
+                aria-label="登出"
+              >
+                <span className="tabbar-icon" aria-hidden="true">🚪</span>
+                <span className="tabbar-label">登出</span>
+              </button>
+            </li>
+          )}
         </ul>
       </nav>
     </>

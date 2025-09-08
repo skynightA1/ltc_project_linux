@@ -10,6 +10,7 @@ import './AIAssistant.css';
 const AIAssistant: React.FC = () => {
   const { state, dispatch, addChatMessage, clearChatHistory } = useApp();
   const [isLoading, setIsLoading] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
