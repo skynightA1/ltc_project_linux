@@ -1,0 +1,376 @@
+.health-records {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.health-records-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.health-records-header h1 {
+  margin: 0 0 8px 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.health-records-header p {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+}
+
+/* 指標選擇器 */
+.metric-selector {
+  margin-bottom: 32px;
+}
+
+.metric-selector h2 {
+  margin: 0 0 16px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.metric-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.metric-btn:hover {
+  border-color: #1976d2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.metric-btn.active {
+  border-color: #1976d2;
+  background: #e3f2fd;
+}
+
+.metric-icon {
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 50%;
+}
+
+.metric-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #333;
+}
+
+/* 統計摘要 */
+.statistics {
+  margin-bottom: 32px;
+}
+
+.statistics h2 {
+  margin: 0 0 16px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.stat-unit {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+/* 趨勢圖表 */
+.trend-chart {
+  margin-bottom: 32px;
+}
+
+.trend-chart h2 {
+  margin: 0 0 16px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.chart-container {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 最近記錄 */
+.recent-records h2 {
+  margin: 0 0 16px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.records-list {
+  display: grid;
+  gap: 12px;
+}
+
+.record-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.record-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.record-content {
+  flex: 1;
+}
+
+.record-value {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+.record-unit {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 2px;
+}
+
+.record-time {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.record-status {
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 12px;
+  background: #f8f9fa;
+  flex-shrink: 0;
+}
+
+/* 高對比度模式 */
+.high-contrast .health-records {
+  background: #000000;
+  color: #ffffff;
+}
+
+.high-contrast .health-records-header h1 {
+  color: #ffffff;
+}
+
+.high-contrast .health-records-header p {
+  color: #cccccc;
+}
+
+.high-contrast .metric-selector h2,
+.high-contrast .statistics h2,
+.high-contrast .trend-chart h2,
+.high-contrast .recent-records h2 {
+  color: #ffffff;
+}
+
+.high-contrast .metric-btn,
+.high-contrast .stat-card,
+.high-contrast .chart-container,
+.high-contrast .record-item {
+  background: #333333;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.high-contrast .metric-btn:hover,
+.high-contrast .metric-btn.active {
+  background: #666666;
+}
+
+.high-contrast .metric-label,
+.high-contrast .stat-value,
+.high-contrast .record-value {
+  color: #ffffff;
+}
+
+.high-contrast .stat-label,
+.high-contrast .record-unit,
+.high-contrast .record-time {
+  color: #cccccc;
+}
+
+.high-contrast .metric-icon,
+.high-contrast .record-icon {
+  background: #666666;
+}
+
+.high-contrast .record-status {
+  background: #666666;
+}
+
+/* 字體大小調整 */
+.font-small .health-records-header h1 {
+  font-size: 1.6rem;
+}
+
+.font-small .health-records-header p {
+  font-size: 0.9rem;
+}
+
+.font-small .metric-selector h2,
+.font-small .statistics h2,
+.font-small .trend-chart h2,
+.font-small .recent-records h2 {
+  font-size: 1.1rem;
+}
+
+.font-small .metric-label {
+  font-size: 0.8rem;
+}
+
+.font-small .stat-value {
+  font-size: 1.3rem;
+}
+
+.font-small .record-value {
+  font-size: 1rem;
+}
+
+.font-large .health-records-header h1 {
+  font-size: 2.4rem;
+}
+
+.font-large .health-records-header p {
+  font-size: 1.1rem;
+}
+
+.font-large .metric-selector h2,
+.font-large .statistics h2,
+.font-large .trend-chart h2,
+.font-large .recent-records h2 {
+  font-size: 1.4rem;
+}
+
+.font-large .metric-label {
+  font-size: 0.95rem;
+}
+
+.font-large .stat-value {
+  font-size: 1.7rem;
+}
+
+.font-large .record-value {
+  font-size: 1.25rem;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .health-records {
+    padding: 16px;
+  }
+  
+  .health-records-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .metric-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .metric-btn {
+    padding: 12px;
+  }
+  
+  .stat-card {
+    padding: 16px;
+  }
+  
+  .chart-container {
+    padding: 16px;
+  }
+  
+  .record-item {
+    padding: 12px;
+  }
+}
+
+/* 無障礙設計 */
+.metric-btn:focus,
+.stat-card:focus,
+.record-item:focus {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+}
+
+.high-contrast .metric-btn:focus,
+.high-contrast .stat-card:focus,
+.high-contrast .record-item:focus {
+  outline-color: #ffffff;
+}

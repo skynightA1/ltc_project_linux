@@ -1,0 +1,443 @@
+.dashboard {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.dashboard-header h1 {
+  margin: 0 0 8px 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.dashboard-header p {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+}
+
+/* 快速操作 */
+.quick-actions {
+  margin-bottom: 32px;
+}
+
+.quick-actions h2 {
+  margin: 0 0 16px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.action-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.action-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border-color: #1976d2;
+}
+
+.action-card.emergency {
+  border-color: #d32f2f;
+  background: linear-gradient(135deg, #ffebee, #ffffff);
+}
+
+.action-card.emergency:hover {
+  border-color: #b71c1c;
+  background: linear-gradient(135deg, #ffcdd2, #ffffff);
+}
+
+.action-icon {
+  font-size: 2.5rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 50%;
+}
+
+.action-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.action-description {
+  font-size: 0.875rem;
+  color: #666;
+  text-align: center;
+}
+
+/* 健康概覽 */
+.health-overview {
+  margin-bottom: 32px;
+}
+
+.health-overview h2 {
+  margin: 0 0 16px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.overview-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.overview-icon {
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.overview-content {
+  flex: 1;
+}
+
+.overview-title {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.overview-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.overview-status {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.overview-status.normal {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+.overview-status.warning {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.overview-status.danger {
+  background: #ffebee;
+  color: #d32f2f;
+}
+
+/* 健康趨勢圖表 */
+.health-trends {
+  margin-bottom: 32px;
+}
+
+.health-trends h2 {
+  margin: 0 0 16px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.chart-container {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 今日提醒 */
+.today-reminders h2 {
+  margin: 0 0 16px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.reminders-list {
+  display: grid;
+  gap: 12px;
+}
+
+.reminder-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.reminder-item:hover {
+  border-color: #1976d2;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.reminder-item.completed {
+  opacity: 0.6;
+  background: #f8f9fa;
+}
+
+.reminder-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.reminder-content {
+  flex: 1;
+}
+
+.reminder-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+.reminder-time {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.reminder-status {
+  font-size: 1.25rem;
+  color: #4caf50;
+  flex-shrink: 0;
+}
+
+.reminder-item.completed .reminder-status {
+  color: #666;
+}
+
+/* 高對比度模式 */
+.high-contrast .dashboard {
+  background: #000000;
+  color: #ffffff;
+}
+
+.high-contrast .dashboard-header h1 {
+  color: #ffffff;
+}
+
+.high-contrast .dashboard-header p {
+  color: #cccccc;
+}
+
+.high-contrast .quick-actions h2,
+.high-contrast .health-overview h2,
+.high-contrast .health-trends h2,
+.high-contrast .today-reminders h2 {
+  color: #ffffff;
+}
+
+.high-contrast .action-card,
+.high-contrast .overview-card,
+.high-contrast .chart-container,
+.high-contrast .reminder-item {
+  background: #333333;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.high-contrast .action-card:hover,
+.high-contrast .overview-card:hover,
+.high-contrast .reminder-item:hover {
+  background: #666666;
+}
+
+.high-contrast .action-title,
+.high-contrast .overview-value,
+.high-contrast .reminder-title {
+  color: #ffffff;
+}
+
+.high-contrast .action-description,
+.high-contrast .overview-title,
+.high-contrast .reminder-time {
+  color: #cccccc;
+}
+
+.high-contrast .action-icon,
+.high-contrast .overview-icon,
+.high-contrast .reminder-icon {
+  background: #666666;
+}
+
+/* 字體大小調整 */
+.font-small .dashboard-header h1 {
+  font-size: 1.6rem;
+}
+
+.font-small .dashboard-header p {
+  font-size: 0.9rem;
+}
+
+.font-small .quick-actions h2,
+.font-small .health-overview h2,
+.font-small .health-trends h2,
+.font-small .today-reminders h2 {
+  font-size: 1.1rem;
+}
+
+.font-small .action-title {
+  font-size: 1rem;
+}
+
+.font-small .action-description {
+  font-size: 0.8rem;
+}
+
+.font-small .overview-value {
+  font-size: 1.1rem;
+}
+
+.font-small .reminder-title {
+  font-size: 0.9rem;
+}
+
+.font-small .reminder-time {
+  font-size: 0.8rem;
+}
+
+.font-large .dashboard-header h1 {
+  font-size: 2.4rem;
+}
+
+.font-large .dashboard-header p {
+  font-size: 1.1rem;
+}
+
+.font-large .quick-actions h2,
+.font-large .health-overview h2,
+.font-large .health-trends h2,
+.font-large .today-reminders h2 {
+  font-size: 1.4rem;
+}
+
+.font-large .action-title {
+  font-size: 1.25rem;
+}
+
+.font-large .action-description {
+  font-size: 0.95rem;
+}
+
+.font-large .overview-value {
+  font-size: 1.4rem;
+}
+
+.font-large .reminder-title {
+  font-size: 1.1rem;
+}
+
+.font-large .reminder-time {
+  font-size: 0.95rem;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 16px;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .action-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .action-card {
+    padding: 20px;
+  }
+  
+  .overview-card {
+    padding: 16px;
+  }
+  
+  .chart-container {
+    padding: 16px;
+  }
+  
+  .reminder-item {
+    padding: 12px;
+  }
+}
+
+/* 無障礙設計 */
+.action-card:focus,
+.overview-card:focus,
+.reminder-item:focus {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+}
+
+.high-contrast .action-card:focus,
+.high-contrast .overview-card:focus,
+.high-contrast .reminder-item:focus {
+  outline-color: #ffffff;
+}

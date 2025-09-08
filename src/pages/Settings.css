@@ -1,0 +1,536 @@
+.settings {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.settings-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.settings-header h1 {
+  margin: 0 0 8px 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.settings-header p {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+}
+
+.settings-content {
+  display: grid;
+  gap: 32px;
+}
+
+/* 設定區塊 */
+.setting-section {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.setting-section h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.setting-description {
+  margin: 0 0 16px 0;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+/* 字體大小選項 */
+.setting-options {
+  display: flex;
+  gap: 12px;
+}
+
+.option-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  background: #f8f9fa;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.option-btn:hover {
+  border-color: #1976d2;
+  background: #e3f2fd;
+}
+
+.option-btn.active {
+  border-color: #1976d2;
+  background: #1976d2;
+  color: white;
+}
+
+.option-icon {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.option-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* 切換開關 */
+.setting-toggle {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+  background-color: #1976d2;
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(26px);
+}
+
+.toggle-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+/* 下拉選單 */
+.setting-select select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.setting-select select:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+/* 資料管理按鈕 */
+.setting-actions {
+  display: grid;
+  gap: 12px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.action-btn:hover {
+  background: #e3f2fd;
+  border-color: #1976d2;
+}
+
+.action-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.action-content {
+  flex: 1;
+}
+
+.action-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.action-description {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+/* 關於資訊 */
+.about-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.app-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.app-icon {
+  font-size: 2.5rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.app-details {
+  flex: 1;
+}
+
+.app-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.app-version {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.about-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.about-link {
+  padding: 12px 16px;
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #1976d2;
+  font-size: 0.875rem;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.about-link:hover {
+  background: #e3f2fd;
+  border-color: #1976d2;
+}
+
+/* 高對比度模式 */
+.high-contrast .settings {
+  background: #000000;
+  color: #ffffff;
+}
+
+.high-contrast .settings-header h1 {
+  color: #ffffff;
+}
+
+.high-contrast .settings-header p {
+  color: #cccccc;
+}
+
+.high-contrast .setting-section {
+  background: #333333;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.high-contrast .setting-section h2 {
+  color: #ffffff;
+}
+
+.high-contrast .setting-description {
+  color: #cccccc;
+}
+
+.high-contrast .option-btn {
+  background: #666666;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.high-contrast .option-btn:hover {
+  background: #888888;
+  border-color: #ffffff;
+}
+
+.high-contrast .option-btn.active {
+  background: #0066cc;
+  border-color: #ffffff;
+}
+
+.high-contrast .toggle-label {
+  color: #ffffff;
+}
+
+.high-contrast .setting-select select {
+  background: #666666;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.high-contrast .action-btn {
+  background: #666666;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.high-contrast .action-btn:hover {
+  background: #888888;
+}
+
+.high-contrast .action-title {
+  color: #ffffff;
+}
+
+.high-contrast .action-description {
+  color: #cccccc;
+}
+
+.high-contrast .action-icon {
+  background: #888888;
+}
+
+.high-contrast .app-info {
+  background: #666666;
+}
+
+.high-contrast .app-icon {
+  background: #888888;
+}
+
+.high-contrast .app-name {
+  color: #ffffff;
+}
+
+.high-contrast .app-version {
+  color: #cccccc;
+}
+
+.high-contrast .about-link {
+  background: #666666;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.high-contrast .about-link:hover {
+  background: #888888;
+}
+
+/* 字體大小調整 */
+.font-small .settings-header h1 {
+  font-size: 1.6rem;
+}
+
+.font-small .settings-header p {
+  font-size: 0.9rem;
+}
+
+.font-small .setting-section h2 {
+  font-size: 1.1rem;
+}
+
+.font-small .setting-description {
+  font-size: 0.8rem;
+}
+
+.font-small .option-icon {
+  font-size: 1.3rem;
+}
+
+.font-small .option-label {
+  font-size: 0.8rem;
+}
+
+.font-small .toggle-label {
+  font-size: 0.9rem;
+}
+
+.font-small .setting-select select {
+  font-size: 0.9rem;
+}
+
+.font-small .action-title {
+  font-size: 0.9rem;
+}
+
+.font-small .action-description {
+  font-size: 0.8rem;
+}
+
+.font-small .app-name {
+  font-size: 1.1rem;
+}
+
+.font-small .app-version {
+  font-size: 0.8rem;
+}
+
+.font-small .about-link {
+  font-size: 0.8rem;
+}
+
+.font-large .settings-header h1 {
+  font-size: 2.4rem;
+}
+
+.font-large .settings-header p {
+  font-size: 1.1rem;
+}
+
+.font-large .setting-section h2 {
+  font-size: 1.4rem;
+}
+
+.font-large .setting-description {
+  font-size: 0.95rem;
+}
+
+.font-large .option-icon {
+  font-size: 1.7rem;
+}
+
+.font-large .option-label {
+  font-size: 0.95rem;
+}
+
+.font-large .toggle-label {
+  font-size: 1.1rem;
+}
+
+.font-large .setting-select select {
+  font-size: 1.1rem;
+}
+
+.font-large .action-title {
+  font-size: 1.1rem;
+}
+
+.font-large .action-description {
+  font-size: 0.95rem;
+}
+
+.font-large .app-name {
+  font-size: 1.4rem;
+}
+
+.font-large .app-version {
+  font-size: 0.95rem;
+}
+
+.font-large .about-link {
+  font-size: 0.95rem;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .settings {
+    padding: 16px;
+  }
+  
+  .settings-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .setting-section {
+    padding: 20px;
+  }
+  
+  .setting-options {
+    flex-direction: column;
+  }
+  
+  .option-btn {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  
+  .about-links {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 無障礙設計 */
+.option-btn:focus,
+.action-btn:focus,
+.about-link:focus {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+}
+
+.high-contrast .option-btn:focus,
+.high-contrast .action-btn:focus,
+.high-contrast .about-link:focus {
+  outline-color: #ffffff;
+}
+

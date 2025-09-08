@@ -1,0 +1,37 @@
+/* App 特定樣式 */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 0;
+}
+
+/* 高對比度模式應用 */
+.high-contrast .app {
+  background: #000000;
+}
+
+.high-contrast .main-content {
+  background: #000000;
+}
+
+/* 字體大小調整應用 */
+.font-small .app {
+  font-size: 0.875rem;
+}
+
+.font-large .app {
+  font-size: 1.125rem;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .main-content {
+    padding-bottom: 80px;
+  }
+}
+

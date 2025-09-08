@@ -1,0 +1,152 @@
+.chat-bubble {
+  margin: 12px 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.chat-bubble.user {
+  justify-content: flex-end;
+}
+
+.chat-bubble.assistant {
+  justify-content: flex-start;
+}
+
+.chat-bubble-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 80%;
+}
+
+.chat-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.chat-message {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chat-text {
+  padding: 12px 16px;
+  border-radius: 18px;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.chat-bubble.user .chat-text {
+  background: #1976d2;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-bubble.assistant .chat-text {
+  background: #f5f5f5;
+  color: #333;
+  border-bottom-left-radius: 4px;
+}
+
+.chat-text p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.chat-timestamp {
+  font-size: 0.75rem;
+  color: #999;
+  align-self: flex-end;
+  margin-top: 2px;
+}
+
+.chat-bubble.user .chat-timestamp {
+  margin-right: 40px;
+}
+
+.chat-bubble.assistant .chat-timestamp {
+  margin-left: 40px;
+}
+
+/* 打字動畫 */
+.typing-animation {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.typing-animation span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #999;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-animation span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typing-animation span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes typing {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* 高對比度模式 */
+.high-contrast .chat-bubble.user .chat-text {
+  background: #0066cc;
+  color: #ffffff;
+}
+
+.high-contrast .chat-bubble.assistant .chat-text {
+  background: #333333;
+  color: #ffffff;
+}
+
+.high-contrast .chat-timestamp {
+  color: #cccccc;
+}
+
+/* 字體大小調整 */
+.font-small .chat-text {
+  font-size: 0.875rem;
+}
+
+.font-large .chat-text {
+  font-size: 1.125rem;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .chat-bubble-content {
+    max-width: 90%;
+  }
+  
+  .chat-text {
+    padding: 10px 14px;
+  }
+  
+  .chat-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+}
+

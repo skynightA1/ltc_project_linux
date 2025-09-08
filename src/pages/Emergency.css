@@ -1,0 +1,528 @@
+.emergency {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.emergency-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.emergency-header h1 {
+  margin: 0 0 8px 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.emergency-header p {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+}
+
+.emergency-content {
+  display: grid;
+  gap: 32px;
+}
+
+/* 主要緊急按鈕 */
+.main-emergency h2,
+.contacts-list h2,
+.emergency-info h2 {
+  margin: 0 0 16px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.emergency-main-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.sos-btn {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 32px 48px;
+  background: linear-gradient(135deg, #d32f2f, #b71c1c);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 16px rgba(211, 47, 47, 0.3);
+  animation: pulse 2s infinite;
+}
+
+.sos-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(211, 47, 47, 0.4);
+}
+
+.sos-btn:active {
+  transform: scale(0.95);
+}
+
+.sos-icon {
+  font-size: 3rem;
+  animation: shake 0.5s infinite;
+}
+
+.sos-text {
+  text-align: left;
+}
+
+.sos-title {
+  margin-bottom: 4px;
+}
+
+.sos-number {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 8px 16px rgba(211, 47, 47, 0.3);
+  }
+  50% {
+    box-shadow: 0 8px 16px rgba(211, 47, 47, 0.6);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+}
+
+/* 聯絡人清單 */
+.contacts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.contact-card:hover {
+  border-color: var(--contact-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.contact-icon {
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.contact-description {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.contact-number {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--contact-color);
+}
+
+/* 緊急資訊 */
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.info-icon {
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.info-content h3 {
+  margin: 0 0 4px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.info-content p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: #ffffff;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  padding: 20px 24px 0;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.modal-body {
+  padding: 20px 24px;
+}
+
+.modal-contact {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  font-size: 1.5rem;
+}
+
+.modal-contact-info {
+  flex: 1;
+}
+
+.modal-contact-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.modal-contact-number {
+  font-size: 1rem;
+  color: #666;
+}
+
+.modal-body p {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  padding: 0 24px 24px;
+}
+
+.cancel-btn,
+.confirm-btn {
+  flex: 1;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.cancel-btn:hover {
+  background: #e0e0e0;
+}
+
+.confirm-btn {
+  background: #d32f2f;
+  color: white;
+}
+
+.confirm-btn:hover {
+  background: #b71c1c;
+}
+
+/* 高對比度模式 */
+.high-contrast .emergency {
+  background: #000000;
+  color: #ffffff;
+}
+
+.high-contrast .emergency-header h1 {
+  color: #ffffff;
+}
+
+.high-contrast .emergency-header p {
+  color: #cccccc;
+}
+
+.high-contrast .main-emergency h2,
+.high-contrast .contacts-list h2,
+.high-contrast .emergency-info h2 {
+  color: #ffffff;
+}
+
+.high-contrast .sos-btn {
+  background: linear-gradient(135deg, #cc0000, #990000);
+}
+
+.high-contrast .contact-card,
+.high-contrast .info-card {
+  background: #333333;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.high-contrast .contact-card:hover {
+  background: #666666;
+}
+
+.high-contrast .contact-name,
+.high-contrast .info-content h3 {
+  color: #ffffff;
+}
+
+.high-contrast .contact-description,
+.high-contrast .info-content p {
+  color: #cccccc;
+}
+
+.high-contrast .modal-content {
+  background: #333333;
+  color: #ffffff;
+}
+
+.high-contrast .modal-header h3 {
+  color: #ffffff;
+}
+
+.high-contrast .modal-contact {
+  background: #666666;
+}
+
+.high-contrast .modal-contact-name {
+  color: #ffffff;
+}
+
+.high-contrast .modal-contact-number,
+.high-contrast .modal-body p {
+  color: #cccccc;
+}
+
+.high-contrast .cancel-btn {
+  background: #666666;
+  color: #ffffff;
+}
+
+.high-contrast .cancel-btn:hover {
+  background: #888888;
+}
+
+.high-contrast .confirm-btn {
+  background: #cc0000;
+}
+
+.high-contrast .confirm-btn:hover {
+  background: #990000;
+}
+
+/* 字體大小調整 */
+.font-small .emergency-header h1 {
+  font-size: 1.6rem;
+}
+
+.font-small .emergency-header p {
+  font-size: 0.9rem;
+}
+
+.font-small .main-emergency h2,
+.font-small .contacts-list h2,
+.font-small .emergency-info h2 {
+  font-size: 1.1rem;
+}
+
+.font-small .sos-btn {
+  font-size: 1.3rem;
+  padding: 24px 36px;
+}
+
+.font-small .sos-icon {
+  font-size: 2.5rem;
+}
+
+.font-small .sos-number {
+  font-size: 1.6rem;
+}
+
+.font-small .contact-name {
+  font-size: 1rem;
+}
+
+.font-small .contact-number {
+  font-size: 0.9rem;
+}
+
+.font-large .emergency-header h1 {
+  font-size: 2.4rem;
+}
+
+.font-large .emergency-header p {
+  font-size: 1.1rem;
+}
+
+.font-large .main-emergency h2,
+.font-large .contacts-list h2,
+.font-large .emergency-info h2 {
+  font-size: 1.4rem;
+}
+
+.font-large .sos-btn {
+  font-size: 1.7rem;
+  padding: 40px 60px;
+}
+
+.font-large .sos-icon {
+  font-size: 3.5rem;
+}
+
+.font-large .sos-number {
+  font-size: 2.4rem;
+}
+
+.font-large .contact-name {
+  font-size: 1.25rem;
+}
+
+.font-large .contact-number {
+  font-size: 1.1rem;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .emergency {
+    padding: 16px;
+  }
+  
+  .emergency-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .sos-btn {
+    padding: 24px 32px;
+    font-size: 1.25rem;
+  }
+  
+  .sos-icon {
+    font-size: 2.5rem;
+  }
+  
+  .sos-number {
+    font-size: 1.75rem;
+  }
+  
+  .contacts-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .info-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-card {
+    padding: 16px;
+  }
+  
+  .info-card {
+    padding: 16px;
+  }
+}
+
+/* 無障礙設計 */
+.sos-btn:focus,
+.contact-card:focus {
+  outline: 3px solid #d32f2f;
+  outline-offset: 2px;
+}
+
+.high-contrast .sos-btn:focus,
+.high-contrast .contact-card:focus {
+  outline-color: #ffffff;
+}
+
