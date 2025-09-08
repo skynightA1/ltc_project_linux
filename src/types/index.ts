@@ -5,14 +5,18 @@ export interface ChatMessage {
   content: string;
   timestamp: Date;
   isTyping?: boolean;
+  userId?: number;
+  username?: string;
 }
 
 // Webhook 請求型別
 export interface WebhookRequest {
   messages: ChatMessage[];
-  metadata: {
-    client: string;
-    locale: string;
+  metadata?: {
+    client?: string;
+    locale?: string;
+    username?: string;
+    userId?: number;
   };
 }
 

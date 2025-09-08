@@ -4,11 +4,13 @@ import { ChatMessage } from '../types';
 import ChatBubble from '../components/ChatBubble';
 import ChatInput from '../components/ChatInput';
 import { sendWebhookMessage } from '../lib/webhook';
+import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 import './AIAssistant.css';
 
 const AIAssistant: React.FC = () => {
   const { state, dispatch, addChatMessage, clearChatHistory } = useApp();
+  const { state: authState } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isTyping, setIsTyping] = useState(false);
@@ -29,7 +31,9 @@ const AIAssistant: React.FC = () => {
       id: Date.now().toString(),
       role: 'user',
       content: content.trim(),
-      timestamp: new Date()
+      timestamp: new Date(),
+      userId: authState.user?.id,
+      username: authState.user?.username || 'guest'
     };
 
     addChatMessage(userMessage);
@@ -50,11 +54,7 @@ const AIAssistant: React.FC = () => {
 
     try {
       const response = await sendWebhookMessage({
-        messages: state.chatHistory.concat(userMessage),
-        metadata: {
-          client: 'web',
-          locale: state.settings.language
-        }
+        messages: state.chatHistory.concat(userMessage)
       });
 
       if (response.error) {

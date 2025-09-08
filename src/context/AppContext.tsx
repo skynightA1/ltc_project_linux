@@ -88,6 +88,17 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     };
   });
 
+  // 監聽登入成功事件以清空聊天
+  useEffect(() => {
+    const handler = () => {
+      dispatch({ type: 'CLEAR_CHAT_HISTORY' });
+    };
+    window.addEventListener('clear-chat', handler);
+    return () => {
+      window.removeEventListener('clear-chat', handler);
+    };
+  }, []);
+
   // 保存設定到 localStorage
   useEffect(() => {
     localStorage.setItem('appSettings', JSON.stringify(state.settings));

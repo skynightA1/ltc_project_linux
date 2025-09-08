@@ -129,6 +129,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       localStorage.setItem('authUser', JSON.stringify(data.user));
 
       dispatch({ type: 'AUTH_SUCCESS', payload: { user: data.user, token: data.token } });
+      // 登入成功後通知其他 context 清空聊天紀錄
+      try {
+        window.dispatchEvent(new Event('clear-chat'));
+      } catch (e) {
+        // ignore for non-browser env
+      }
     } catch (error) {
       console.error('登入錯誤:', error);
       dispatch({ type: 'AUTH_FAILURE' });

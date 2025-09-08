@@ -1,9 +1,11 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
+import { useAuth } from '../context/AuthContext';
 import './Settings.css';
 
 const Settings: React.FC = () => {
   const { state, updateSettings } = useApp();
+  const { state: authState, logout } = useAuth();
 
   const handleFontSizeChange = (size: 'small' | 'medium' | 'large') => {
     updateSettings({ fontSize: size });
@@ -25,6 +27,20 @@ const Settings: React.FC = () => {
       </div>
 
       <div className="settings-content">
+        {/* 使用者資訊與登出 */}
+        {authState.user && (
+          <section className="setting-section">
+            <h2>帳戶</h2>
+            <p className="setting-description">管理您的登入狀態與個人資訊</p>
+            <div className="setting-actions">
+              <div className="action-content">
+                <div className="action-title">歡迎，{authState.user.full_name || authState.user.username}</div>
+                <div className="action-description">電子郵件：{authState.user.email}</div>
+              </div>
+              <button className="logout-btn" onClick={logout} aria-label="登出">登出</button>
+            </div>
+          </section>
+        )}
         {/* 字體大小設定 */}
         <section className="setting-section">
           <h2>字體大小</h2>
