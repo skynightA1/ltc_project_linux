@@ -1,10 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const { testConnection } = require('./config/database');
+const { testConnection, ensureFamilySchema } = require('./config/database');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const chatRoutes = require('./routes/chat');
+const familyRoutes = require('./routes/family');
 
 // 載入環境變數
 dotenv.config();
@@ -24,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/chat', chatRoutes);
+app.use('/api/family', familyRoutes);
 
 // 健康檢查
 app.get('/api/health', (req, res) => {
@@ -60,6 +62,9 @@ const startServer = async () => {
       process.exit(1);
     }
     
+    // 建立家庭功能資料表
+    await ensureFamilySchema();
+
     // 啟動 HTTP 伺服器
     app.listen(PORT, () => {
       console.log(`🚀 後端 API 伺服器運行在 http://localhost:${PORT}`);

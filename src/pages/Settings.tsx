@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
 import './Settings.css';
@@ -6,6 +6,118 @@ import './Settings.css';
 const Settings: React.FC = () => {
   const { state, updateSettings } = useApp();
   const { state: authState, logout } = useAuth();
+
+  // 家庭功能狀態
+  const [inviteeUsername, setInviteeUsername] = useState<string>('');
+  const [isInviting, setIsInviting] = useState<boolean>(false);
+  const [invitations, setInvitations] = useState<Array<{ id: number; family_id: number; inviter_id: number; inviter_username: string; status: string; created_at: string }>>([]);
+  const [members, setMembers] = useState<Array<{ id: number; username: string; email: string; full_name?: string }>>([]);
+  const [familyId, setFamilyId] = useState<number | null>(null);
+  const [loadingInvites, setLoadingInvites] = useState<boolean>(false);
+  const [loadingMembers, setLoadingMembers] = useState<boolean>(false);
+  const API_BASE = 'http://localhost:3001';
+
+  const buildAuthHeaders = (): HeadersInit => {
+    const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+    if (authState.token) {
+      headers['Authorization'] = `Bearer ${authState.token}`;
+    }
+    return headers;
+  };
+
+  const loadInvitations = async () => {
+    if (!authState.token) return;
+    try {
+      setLoadingInvites(true);
+      const res = await fetch(`${API_BASE}/api/family/invitations`, {
+        headers: buildAuthHeaders()
+      });
+      if (!res.ok) throw new Error('取得邀請清單失敗');
+      const data = await res.json();
+      setInvitations(data.invitations || []);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setLoadingInvites(false);
+    }
+  };
+
+  const loadMembers = async () => {
+    if (!authState.token) return;
+    try {
+      setLoadingMembers(true);
+      const res = await fetch(`${API_BASE}/api/family/members`, {
+        headers: buildAuthHeaders()
+      });
+      if (!res.ok) throw new Error('取得家庭成員失敗');
+      const data = await res.json();
+      setFamilyId(data.familyId ?? null);
+      setMembers(data.members || []);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setLoadingMembers(false);
+    }
+  };
+
+  useEffect(() => {
+    loadInvitations();
+    loadMembers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authState.token]);
+
+  const sendInvite = async () => {
+    if (!inviteeUsername || !authState.token) return;
+    try {
+      setIsInviting(true);
+      const res = await fetch(`${API_BASE}/api/family/invite`, {
+        method: 'POST',
+        headers: buildAuthHeaders(),
+        body: JSON.stringify({ inviteeUsername: inviteeUsername.trim() })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || '邀請失敗');
+      setInviteeUsername('');
+      await loadInvitations();
+    } catch (e) {
+      console.error(e);
+      alert(e instanceof Error ? e.message : '邀請失敗');
+    } finally {
+      setIsInviting(false);
+    }
+  };
+
+  const acceptInvite = async (invitationId: number) => {
+    try {
+      const res = await fetch(`${API_BASE}/api/family/accept`, {
+        method: 'POST',
+        headers: buildAuthHeaders(),
+        body: JSON.stringify({ invitationId })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || '接受邀請失敗');
+      await Promise.all([loadInvitations(), loadMembers()]);
+    } catch (e) {
+      console.error(e);
+      alert(e instanceof Error ? e.message : '接受邀請失敗');
+    }
+  };
+
+  const declineInvite = async (invitationId: number) => {
+    try {
+      const res = await fetch(`${API_BASE}/api/family/decline`, {
+        method: 'POST',
+        headers: buildAuthHeaders(),
+        body: JSON.stringify({ invitationId })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || '拒絕邀請失敗');
+      await loadInvitations();
+    } catch (e) {
+      console.error(e);
+      alert(e instanceof Error ? e.message : '拒絕邀請失敗');
+    }
+  };
 
   const handleFontSizeChange = (size: 'small' | 'medium' | 'large') => {
     updateSettings({ fontSize: size });
@@ -38,6 +150,72 @@ const Settings: React.FC = () => {
                 <div className="action-description">電子郵件：{authState.user.email}</div>
               </div>
               <button className="logout-btn" onClick={logout} aria-label="登出">登出</button>
+            </div>
+          </section>
+        )}
+
+        {/* 家庭功能 */}
+        {authState.user && (
+          <section className="setting-section">
+            <h2>家庭</h2>
+            <p className="setting-description">邀請其他用戶加入家庭並管理家庭成員</p>
+
+            <div className="setting-actions" style={{ gap: '12px', alignItems: 'flex-end' }}>
+              <div className="action-content" style={{ flex: 1 }}>
+                <div className="action-title">邀請用戶加入家庭</div>
+                <div className="action-description">輸入對方的用戶名稱</div>
+                <input
+                  type="text"
+                  value={inviteeUsername}
+                  onChange={(e) => setInviteeUsername(e.target.value)}
+                  placeholder="用戶名稱"
+                  aria-label="用戶名稱"
+                  style={{ width: '100%', padding: '8px', marginTop: '8px' }}
+                />
+              </div>
+              <button className="action-btn" onClick={sendInvite} disabled={isInviting || !inviteeUsername}>
+                <div className="action-icon">👪</div>
+                <div className="action-content">
+                  <div className="action-title">送出邀請</div>
+                  <div className="action-description">將此用戶加入你的家庭</div>
+                </div>
+              </button>
+            </div>
+
+            <div className="setting-subsection" style={{ marginTop: '16px' }}>
+              <h3>我的邀請</h3>
+              {loadingInvites ? (
+                <div>載入中...</div>
+              ) : invitations.length === 0 ? (
+                <div>目前沒有待處理的邀請</div>
+              ) : (
+                <ul>
+                  {invitations.map((inv) => (
+                    <li key={inv.id} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0' }}>
+                      <span>來自 {inv.inviter_username}（邀請 ID: {inv.id}）</span>
+                      <button onClick={() => acceptInvite(inv.id)} className="action-btn">接受</button>
+                      <button onClick={() => declineInvite(inv.id)} className="action-btn">拒絕</button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
+            <div className="setting-subsection" style={{ marginTop: '16px' }}>
+              <h3>家庭成員 {familyId ? `(ID: ${familyId})` : ''}</h3>
+              {loadingMembers ? (
+                <div>載入中...</div>
+              ) : members.length === 0 ? (
+                <div>尚未加入任何家庭</div>
+              ) : (
+                <ul>
+                  {members.map((m) => (
+                    <li key={m.id} style={{ padding: '6px 0' }}>
+                      {m.full_name || m.username}（{m.email}）
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </section>
         )}
@@ -108,36 +286,7 @@ const Settings: React.FC = () => {
           </div>
         </section>
 
-        {/* 資料管理 */}
-        <section className="setting-section">
-          <h2>資料管理</h2>
-          <p className="setting-description">管理您的個人資料和應用程式資料</p>
-          <div className="setting-actions">
-            <button className="action-btn export-btn">
-              <div className="action-icon">📤</div>
-              <div className="action-content">
-                <div className="action-title">匯出資料</div>
-                <div className="action-description">下載您的健康資料</div>
-              </div>
-            </button>
-            
-            <button className="action-btn import-btn">
-              <div className="action-icon">📥</div>
-              <div className="action-content">
-                <div className="action-title">匯入資料</div>
-                <div className="action-description">從檔案匯入健康資料</div>
-              </div>
-            </button>
-            
-            <button className="action-btn clear-btn">
-              <div className="action-icon">🗑️</div>
-              <div className="action-content">
-                <div className="action-title">清除資料</div>
-                <div className="action-description">清除所有本地資料</div>
-              </div>
-            </button>
-          </div>
-        </section>
+        
 
         {/* 關於 */}
         <section className="setting-section">

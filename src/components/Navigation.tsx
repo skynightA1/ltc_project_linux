@@ -41,18 +41,7 @@ const Navigation: React.FC = () => {
             ))}
           </ul>
 
-          {/* 麵包屑 */}
-          <div className="breadcrumb" aria-label="麵包屑導覽">
-            <span className="breadcrumb-item">首頁</span>
-            {location.pathname !== '/' && (
-              <>
-                <span className="breadcrumb-separator">/</span>
-                <span className="breadcrumb-item">
-                  {navItems.find(item => item.path === location.pathname)?.label}
-                </span>
-              </>
-            )}
-          </div>
+          {/* 麵包屑移除 */}
         </div>
       </nav>
 

@@ -104,6 +104,25 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('appSettings', JSON.stringify(state.settings));
   }, [state.settings]);
 
+  // 將字體大小與高對比度實際套用到整個文件
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    const body = document.body;
+    // 字體大小
+    body.classList.remove('font-small', 'font-large');
+    if (state.settings.fontSize === 'small') {
+      body.classList.add('font-small');
+    } else if (state.settings.fontSize === 'large') {
+      body.classList.add('font-large');
+    }
+    // 高對比度
+    if (state.settings.highContrast) {
+      body.classList.add('high-contrast');
+    } else {
+      body.classList.remove('high-contrast');
+    }
+  }, [state.settings.fontSize, state.settings.highContrast]);
+
   // 保存聊天歷史到 localStorage
   useEffect(() => {
     localStorage.setItem('chatHistory', JSON.stringify(state.chatHistory));
