@@ -1,6 +1,6 @@
 import { WebhookRequest, WebhookResponse, ChatMessage } from '../types';
 
-const WEBHOOK_URL = 'http://163.25.107.224:5678/webhook/d6fdcf14-6199-4401-b127-c90afcef4543';
+const WEBHOOK_URL = 'http://localhost:5678/webhook/d6fdcf14-6199-4401-b127-c90afcef4543';
 
 // 指數退避重試函數（預留功能）
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -109,7 +109,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     dispatch({ type: 'AUTH_START' });
     
     try {
-      const response = await fetch('http://163.25.107.224:3001/api/auth/login', {
+      const response = await fetch('http://localhost:3001/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -147,7 +147,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     dispatch({ type: 'AUTH_START' });
     
     try {
-      const response = await fetch('http://163.25.107.224:3001/api/auth/register', {
+      const response = await fetch('http://localhost:3001/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -189,7 +189,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     try {
-      const response = await fetch('http://http://163.25.107.224:3001/api/auth/me', {
+      const response = await fetch('http://localhost:3001/api/auth/me', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
